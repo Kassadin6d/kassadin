@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>dreamit-root</artifactId>
+        <groupId>cn.dreamit</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.dreamit</groupId>
+    <artifactId>dreamit-web</artifactId>
+    <packaging>war</packaging>
+    <version>2.0.0</version>
+
+    <properties>
+        <!--
+            Dev:    1.0.0-SNAPSHOT
+            Build:  2.0.0-build7568-revise1
+        -->
+        <dreamit-core.version>1.0.0-SNAPSHOT</dreamit-core.version>
+        <webServices.version>1.0.0</webServices.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>utf-8</encoding>
+                    <compilerArguments>
+                        <bootclasspath>${env.JAVA_HOME}/jre/lib/rt.jar;${env.JAVA_HOME}/jre/lib/plugin.jar
+                        </bootclasspath>
+                    </compilerArguments>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <!--<groupId>cn.dreamit</groupId>
+            <artifactId>dreamit-core</artifactId>
+            <version>${dreamit-core.version}</version>-->
+
+            <!-- 项目组直接引用相关jar -->
+
+                <groupId>cn.dreamit</groupId>
+                <artifactId>dreamit-core</artifactId>
+                <scope>system</scope>
+                <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/dreamit-core.jar</systemPath>
+
+        </dependency>
+        <!--远程连接linux建立SSH连接-->
+        <dependency>
+            <groupId>com.jcraft</groupId>
+            <artifactId>jsch</artifactId>
+            <version>0.1.46</version>
+        </dependency>
+    </dependencies>
+    <repositories>
+        <repository>
+            <id>dreamit-snapshot</id>
+            <url>http://117.184.59.230:59981/repository/dreamit-snapshot/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>dreamit</id>
+            <url>http://117.184.59.230:59981/repository/dreamit/</url>
+        </repository>
+
+        <repository>
+            <id>ej-technologies</id>
+            <url>https://maven.ej-technologies.com/repository/</url>
+        </repository>
+        <repository>
+            <id>com.teamdev</id>
+            <url>http://maven.teamdev.com/repository/products</url>
+        </repository>
+
+        <repository>
+            <id>aliyunmaven</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+
+</project>
